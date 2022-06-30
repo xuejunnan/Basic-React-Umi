@@ -1,0 +1,51 @@
+@import '~@kyligence/milhouse-react/dist/style/color.less';
+@import '~@kyligence/milhouse-react/dist/style/font.less';
+@import '~@kyligence/milhouse-react/dist/style/util.less';
+@import '~@kyligence/milhouse-react/dist/style/shadow.less';
+@import '~@kyligence/milhouse-react/dist/style/transition.less';
+
+@color-gray-1: #fdfdfd;
+@color-active-bg: #ced6e4;
+@color-gray-bg-1: @color-gray-1;
+@color-tips-background: #f0f8fe;
+@border-normal-color: #ecf0f8;
+
+@color-primary: @palette-blue-500;
+
+.hover-active() {
+  &:hover {
+    background-color: @color-container-hover;
+  }
+  &:active {
+    background-color: @color-active-bg;
+  }
+}
+.circle(@color: @palette-gray-700, @size: 8px) {
+  display: inline-block;
+  background-color: @color;
+  width: @size;
+  height: @size;
+  border-radius: 50%;
+}
+
+.ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+a {
+  color: @color-primary;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+// Zen vars
+
+// base layout
+@page-header-height: 48px;
+@page-main-width: 1150px;
+
+@drop-over-border: 2px solid @color-fill-primary;
+@datasource-step-control-height: 62px;
