@@ -23,7 +23,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 function Metric() {
-  return <section>metric</section>;
+  return (
+    <div>
+      <p>metric page</p>
+    </div>
+  );
 }
 
 Metric.routeName = 'METRIC';

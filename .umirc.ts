@@ -55,10 +55,10 @@ export default defineConfig({
   },
   antd: false,
   locale: {
-    default: 'en-US',
+    default: 'zh-CN',
     antd: false,
     title: false,
-    baseNavigator: false,
+    baseNavigator: true,
     baseSeparator: '-',
   },
   easyRouter: {

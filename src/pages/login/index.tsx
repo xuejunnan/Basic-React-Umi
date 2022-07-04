@@ -22,8 +22,29 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+import { Button } from '@ui';
+import { useEffect, useState } from 'react';
+import { FormattedMessage, setLocale } from 'umi';
+
 function Login() {
-  return <section>login</section>;
+  const [state, setstate] = useState(true);
+  useEffect(() => {
+    // 修改当前文章的语言
+    setLocale(state ? 'zh-CN' : 'en-US', false);
+  }, [state]);
+
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          setstate(!state);
+        }}
+      >
+        change
+      </Button>
+      <FormattedMessage id="ts" />
+    </div>
+  );
 }
 
 Login.routeName = 'LOGIN';
