@@ -1,4 +1,7 @@
 {
   "kz.ms.text.404.msg": "Page not found",
-  "kz.ms.text.refresh": "Refresh"
+  "kz.ms.text.cancel": "Cancel",
+  "kz.ms.text.dialog.default_title": "Message",
+  "kz.ms.text.refresh": "Refresh",
+  "ts": "ss"
 }

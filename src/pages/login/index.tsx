@@ -24,7 +24,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import { Button } from '@ui';
 import { useEffect, useState } from 'react';
-import { FormattedMessage, setLocale } from 'umi';
+import { setLocale } from 'umi';
 
 function Login() {
   const [state, setstate] = useState(true);
@@ -42,7 +42,6 @@ function Login() {
       >
         change
       </Button>
-      <FormattedMessage id="ts" />
     </div>
   );
 }

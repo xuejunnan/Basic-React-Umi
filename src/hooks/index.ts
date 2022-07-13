@@ -23,3 +23,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 export { default as useActive } from './useActive';
+export { default as useSyncCallback } from './useSyncCallback';

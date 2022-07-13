@@ -22,13 +22,24 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-function IndexPage() {
-  return (
-    <div>
-      <h1>子应用1</h1>
-    </div>
-  );
-}
+import { useCallback, useEffect, useState } from 'react';
 
-IndexPage.routeName = 'INDEX';
-export default IndexPage;
+const useSyncCallback = (callback: any) => {
+  const [proxyState, setProxyState] = useState({ current: false });
+
+  const Func = useCallback(() => {
+    setProxyState({ current: true });
+  }, [proxyState]);
+
+  useEffect(() => {
+    if (proxyState.current === true) setProxyState({ current: false });
+  }, [proxyState]);
+
+  useEffect(() => {
+    proxyState.current && callback();
+  });
+
+  return Func;
+};
+
+export default useSyncCallback;
