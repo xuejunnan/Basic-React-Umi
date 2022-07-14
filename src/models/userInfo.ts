@@ -49,6 +49,8 @@ const DEFAULT_STATE: UserInfoState = {
 
 export default function UserInfo() {
   const [state, setState] = useImmer<UserInfoState>(DEFAULT_STATE);
+  const auth = 'plateform';
+  const url = 'aa.bb.cc';
 
   const setReset = useCallback(() => {
     setState((draft) => {
@@ -88,7 +90,7 @@ export default function UserInfo() {
     setUserInfo,
     fetchCurrentUserInfo,
   };
-  const states = { ...state };
+  const states = { ...state, auth, url };
 
   return {
     actions,

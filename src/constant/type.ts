@@ -32,3 +32,5 @@ export interface IAMUserInfo {
   group_info_list?: string[];
   last_login_time?: number;
 }
+export const PLATEFORM_ADMIN = ['METRIC'];
+export const TENENT_ADMIN = ['DASHBOARD'];

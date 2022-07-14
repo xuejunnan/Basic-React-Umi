@@ -25,17 +25,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import { Request, Response } from 'express';
 
 export default {
-  'POST /mock/demo.do': {
+  'POST /api/mock/demo': {
     code: '',
-    data: { userName: 'Jerry', toke: 'adddfefefefefefefe' },
+    data: { userName: 'Jerry', token: 'adddfefefefefefefe' },
     description: null,
     message: null,
   },
+
   'POST /mock/home.do'(__: Request, res: Response) {
     setTimeout(() => {
       res.send({
         code: '',
-        data: { userName: 'Jerry', toke: 'adddfefefefefefefe' },
+        data: { userName: 'Jerry', token: 'adddfefefefefefefe' },
         description: null,
         message: null,
       });

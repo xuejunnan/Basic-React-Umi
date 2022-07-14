@@ -28,6 +28,7 @@ import {
   Options as HookOptions,
   Result,
 } from 'ahooks/lib/useRequest/src/types';
+import { useModel } from 'umi';
 
 import { BaseClient } from '@/utils/client';
 import client, { ServiceError, getCancelToken } from '@/utils/service';
@@ -74,4 +75,10 @@ export function useCancellableService<T, P extends any[]>(
       result.cancel();
     },
   });
+}
+export function useLoginUrl() {
+  const {
+    states: { url },
+  } = useModel('userInfo');
+  return url;
 }

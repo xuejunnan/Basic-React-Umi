@@ -29,6 +29,7 @@ import { Message } from '@ui';
 import Client from '../client';
 
 import ServiceError from './error';
+import { useLoginUrl } from './hook';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -37,6 +38,8 @@ import ServiceError from './error';
  *****************************************************************************/
 
 // setting 5 mins request timeout
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
 const REQUEST_TIMEOUT = 1000 * 60 * 5; // eslint-disable-line no-magic-numbers
 const HTTP_STATUS = {
   UNAUTHORIZED: 401,
@@ -101,7 +104,7 @@ instance.interceptors.response.use(
             replacePath = generatePath(PATHS.NO_FOUND_PAGE, { locale });
             break;
           case HTTP_STATUS.UNAUTHORIZED:
-            replacePath = generatePath(PATHS.LOGIN, { locale });
+            replacePath = useLoginUrl();
 
             break;
           default:

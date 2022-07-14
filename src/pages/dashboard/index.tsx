@@ -22,28 +22,29 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import { EasyRedirect, PATHS, useModel } from 'umi';
 import { useEffect } from 'react';
 
-import SuspenseLoading from '@/Loading';
-import { isEmpty } from '@/utils/assert';
+import { useService } from '@/utils/service';
+import postDemo from '@/services/postDemo';
 
-const AuthWrapper: React.FC = ({ children }) => {
-  const {
-    states: { userInfo, userInfoReturned },
-    actions: { fetchCurrentUserInfo },
-  } = useModel('userInfo');
+function Dashboard() {
+  const { run: test1, data } = useService(postDemo, {
+    manual: true,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
 
   useEffect(() => {
-    // if (!userInfoReturned) fetchCurrentUserInfo({});
+    test1();
   }, []);
-  // if (!userInfoReturned) {
-  //   return <SuspenseLoading />;
-  // } else if (!isEmpty(userInfo)) {
-  //   return <>{children}</>;
-  // } else {
-  //   return <EasyRedirect to={PATHS.LOGIN} />;
-  // }
-  return <>{children}</>;
-};
-export default AuthWrapper;
+  return (
+    <div>
+      <p>DAHSOBR page</p>
+    </div>
+  );
+}
+
+Dashboard.routeName = 'DASHBOARD';
+Dashboard.wrappers = ['@/wrappers/auth'];
+export default Dashboard;

@@ -22,7 +22,46 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+import { useEffect } from 'react';
+
+import { useService } from '@/utils/service';
+import postDemo from '@/services/postDemo';
+
 function Metric() {
+  const { run: test1, data } = useService(postDemo, {
+    manual: true,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+  function ObjectToTree(strarr) {
+    const objTree = {};
+    // 深度遍历
+    const dfs = (pro_arr, obj, val) => {
+      for (let i = 0; i < pro_arr.length - 1; i++) {
+        // 如果没有就赋值新对象
+        if (!obj[pro_arr[i]]) obj[pro_arr[i]] = {};
+        obj = obj[pro_arr[i]];
+      }
+      // 最后一个直接赋值
+      obj[pro_arr[pro_arr.length - 1]] = val;
+    };
+    for (const keys in strarr) {
+      dfs(keys.split('.'), objTree, strarr[keys]);
+    }
+    console.log(objTree);
+    return objTree;
+  }
+  const testarr = {
+    'a.b.c.d': 1,
+    'a.b.c.e': 2,
+    'a.b.f': 3,
+    'a.j': 4,
+  };
+  useEffect(() => {
+    // test1();
+    ObjectToTree(testarr);
+  }, []);
   return (
     <div>
       <p>metric page</p>
@@ -31,4 +70,5 @@ function Metric() {
 }
 
 Metric.routeName = 'METRIC';
+Metric.wrappers = ['@/wrappers/auth'];
 export default Metric;

@@ -22,17 +22,9 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-export const qiankun = {
-  // 应用加载之前
-  async bootstrap(props) {
-    console.log('app1 bootstrap', props);
-  },
-  // 应用 render 之前触发
-  async mount(props) {
-    console.log('app1 mount', props);
-  },
-  // 应用卸载之后触发
-  async unmount(props) {
-    console.log('app1 unmount', props);
-  },
-};
+const url = '/api/mock/demo';
+
+const postDemo: Service.Request<unknown, any> = (query) => (client) =>
+  client.post(url, query);
+
+export default postDemo;

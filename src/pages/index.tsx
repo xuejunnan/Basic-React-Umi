@@ -22,12 +22,15 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+import { EasyRedirect, PATHS } from 'umi';
+
 function IndexPage() {
-  return (
-    <div>
-      <h1>子应用1</h1>
-    </div>
-  );
+  const localAccount = 'a';
+
+  // localstorage 存在 account 说明登录过，可跳转到 metric-store/goals 页
+  if (localAccount) return <EasyRedirect to={PATHS.METRIC} />;
+  // 否则直接跳转登录
+  return <EasyRedirect to={PATHS.LOGIN} />;
 }
 
 IndexPage.routeName = 'INDEX';
